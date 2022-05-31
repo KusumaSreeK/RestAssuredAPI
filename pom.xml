@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>RestAssuredAPITesting</groupId>
+  <artifactId>RestAssuredAPITask</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+
+  <name>RestAssuredAPITask</name>
+  <!-- FIXME change it to the project's website -->
+  <url>http://www.example.com</url>
+
+  <properties>
+	    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	    <aspectj.version>1.9.9.1</aspectj.version>
+	    <testng-version>7.6.0</testng-version>
+	    <allure-testng-version>2.18.1</allure-testng-version>
+	    <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
+	    <maven-surefire-plugin-version>2.22.1</maven-surefire-plugin-version>
+	    <maven.compiler.source>1.7</maven.compiler.source>
+	    <maven.compiler.target>1.7</maven.compiler.target>
+  </properties>
+
+  <dependencies>
+<!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
+	<dependency>
+	    <groupId>io.rest-assured</groupId>
+	    <artifactId>rest-assured</artifactId>
+	    <version>5.1.0</version>
+	    <scope>test</scope>
+	</dependency>
+	    
+		    <!-- https://mvnrepository.com/artifact/org.testng/testng -->
+	<dependency>
+	    <groupId>org.testng</groupId>
+	    <artifactId>testng</artifactId>
+	    <version>${testng-version}</version>
+	    <scope>test</scope>
+	</dependency>
+ 	
+ 		<!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest-all -->
+	<dependency>
+	    <groupId>org.hamcrest</groupId>
+	    <artifactId>hamcrest-all</artifactId>
+	    <version>1.3</version>
+	    <scope>test</scope>
+	</dependency>
+	
+		<!-- https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
+	<dependency>
+	    <groupId>com.googlecode.json-simple</groupId>
+	    <artifactId>json-simple</artifactId>
+	    <version>1.1.1</version>
+	</dependency>
+	
+	<!--Allure Reporting Dependency-->   
+	<dependency>
+	    <groupId>io.qameta.allure</groupId>
+	    <artifactId>allure-rest-assured</artifactId>
+	    <version>${allure-testng-version}</version>
+	</dependency>
+	
+		<!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-testng -->
+	<dependency>
+	    <groupId>io.qameta.allure</groupId>
+	    <artifactId>allure-testng</artifactId>
+	    <version>${allure-testng-version}</version>
+	</dependency>
+	
+
+  </dependencies>
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>${maven.compiler.plugin.version}</version>
+            <configuration>
+                <source>11</source> <!--For JAVA 8 use 1.8-->
+                <target>11</target> <!--For JAVA 8 use 1.8-->
+            </configuration>
+        </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>${maven-surefire-plugin-version}</version>
+            <configuration>
+                <suiteXmlFiles>
+                    <suiteXmlFile>testNG.xml</suiteXmlFile>
+                </suiteXmlFiles>
+                <argLine>
+                    -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                </argLine>
+            </configuration>
+            <dependencies>
+      <dependency>
+                    <groupId>org.aspectj</groupId>
+                    <artifactId>aspectjweaver</artifactId>
+                    <version>${aspectj.version}</version>
+                </dependency>
+            </dependencies>
+        </plugin>
+    </plugins>
+</build>
+</project>

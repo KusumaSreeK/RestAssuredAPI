@@ -1,0 +1,10 @@
+<suite name="Rest API Testing Task">
+	<test name="RestAssuredTests">
+		<classes>
+			<class name="restAssuredTests.Task_Post_Request" />
+			<class name="restAssuredTests.Task_Get_Request" />
+			<class name="restAssuredTests.Task_Get_Request_WithSearchKeyword" />
+		    <class name="restAssuredTests.Task_Delete_Request_WithSearchKeyword" />
+		</classes>
+	</test>
+</suite>
